@@ -1,6 +1,8 @@
 // our-domain.com/[identifier]
 
 import { MongoClient, ObjectId } from 'mongodb';
+import Head from 'next/head';
+import { Fragment } from 'react';
 
 import MeetupDetail from '../../components/meetups/MeetupDetail';
 import { API_KEY } from '../../helper/helper';
@@ -9,12 +11,18 @@ const MeetupDetails = props => {
   const meetup = JSON.parse(props.meetupData);
 
   return (
-    <MeetupDetail
-      image={meetup.data.image}
-      title={meetup.data.title}
-      description={meetup.data.description}
-      address={meetup.data.address}
-    />
+    <Fragment>
+      <Head>
+        <title>SPOT: {meetup.data.title}</title>
+        <meta name="description" content={meetup.data.description}></meta>
+      </Head>
+      <MeetupDetail
+        image={meetup.data.image}
+        title={meetup.data.title}
+        description={meetup.data.description}
+        address={meetup.data.address}
+      />
+    </Fragment>
   );
 };
 
@@ -73,7 +81,7 @@ export const getStaticProps = async context => {
     console.error(`💥${error.message}💥`);
   }
 
-  return { props: { meetupData: JSON.stringify(meetups) } };
+  return { props: { meetupData: JSON.stringify(meetups) }, revalidate: 36000 };
 };
 
 export default MeetupDetails;

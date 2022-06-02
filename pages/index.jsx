@@ -1,47 +1,25 @@
 // our-domain.com/
 
+import Head from 'next/head';
 import { MongoClient } from 'mongodb';
 
 import MeetupList from '../components/meetups/MeetupList';
 import { API_KEY } from '../helper/helper';
-
-export const DUMMY_MEETUPS = [
-  {
-    id: 'm1',
-    image:
-      'https://images.unsplash.com/photo-1545328732-fd7ea6242f4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-    title: 'France',
-    address: '74 rue Léon Dierx, Livry-gargan,  Île-de-France',
-    description: 'First meetup in France. Wine and Dine!',
-  },
-  {
-    id: 'm2',
-    image:
-      'https://images.unsplash.com/photo-1508693926297-1d61ee3df82a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-    title: 'Canada',
-    address: '671 Carling Avenue, Ottawa, Ontario',
-    description: 'Second meetup in Canada. Beautiful Scenery!',
-  },
-  {
-    id: 'm3',
-    image:
-      'https://images.unsplash.com/photo-1561632669-7f55f7975606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-    title: 'Spain',
-    address: 'Carretera 16, Montilla, Córdoba',
-    description: 'Third meetup in Spain. Music and Culture!',
-  },
-  {
-    id: 'm4',
-    image:
-      'https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-    title: 'Austria',
-    address: 'Lerchenfelder Straße 67, Lading, Carinthia',
-    description: 'Fourth meetup in Austria. Nature and Recreations!',
-  },
-];
+import { Fragment } from 'react';
 
 const HomePage = props => {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Vacations</title>
+        <meta
+          name="description"
+          content="checkout vacation spots around the world, and add yours."
+        ></meta>
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 };
 
 // Data Fetching for Pre-rendering:
@@ -94,7 +72,7 @@ export const getStaticProps = async () => {
     console.error(`💥${error.message}💥`);
   }
 
-  return { props: { meetups }, revalidate: 1 };
+  return { props: { meetups }, revalidate: 36000 };
 };
 
 export default HomePage;
