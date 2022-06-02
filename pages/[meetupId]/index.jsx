@@ -49,7 +49,7 @@ export const getStaticPaths = async () => {
   }
 
   return {
-    fallback: false,
+    fallback: 'blocking',
     paths: meetups.map(meetup => ({
       params: { meetupId: meetup._id.toString() },
     })),
@@ -81,7 +81,7 @@ export const getStaticProps = async context => {
     console.error(`💥${error.message}💥`);
   }
 
-  return { props: { meetupData: JSON.stringify(meetups) }, revalidate: 36000 };
+  return { props: { meetupData: JSON.stringify(meetups) }, revalidate: 1800 };
 };
 
 export default MeetupDetails;
