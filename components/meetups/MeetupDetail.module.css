@@ -1,0 +1,27 @@
+.container {
+  /* border-radius: 6px; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+
+  text-align: center;
+  padding-bottom: 0.05rem;
+}
+
+.container img {
+  width: 100%;
+  object-fit: cover;
+  height: 21rem;
+}
+
+.container h1 {
+  color: rgb(139, 66, 18);
+}
+
+.container p {
+  color: rgb(15, 120, 206);
+}
+
+.container address {
+  color: rgb(26, 170, 86);
+}
