@@ -1,6 +1,7 @@
 // Next.js API route ==> /api/new-meetup
 
 import { MongoClient } from 'mongodb';
+import { API_KEY } from '../../helper/helper';
 
 // sending POST request to API (WILL NEVER END UP ON THE CLIENT-SIDE)
 
@@ -9,12 +10,9 @@ const handler = async (req, res) => {
     // end-point for creating a new meetup
     const data = req.body; // contains the data object of the incoming request
 
-    const url =
-      'mongodb+srv://iktheenigma:wnxcKc8D0AktRNvo@cluster0.3jy9v4x.mongodb.net/meetups?retryWrites=true&w=majority';
-
     try {
       // runs on the server-side (the alternative would expose your credentials to users)
-      const client = await MongoClient.connect(url);
+      const client = await MongoClient.connect(API_KEY);
       const db = client.db(); // database
 
       const meetupsCollection = db.collection('meetups'); // like tables in a SQL database

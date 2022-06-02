@@ -21,11 +21,11 @@ const NewMeetupPage = () => {
 
       const data = await response.json();
 
-      console.log(data);
+      console.log(data); // BUG
 
       router.replace('/'); // programmatic navigation
     } catch (error) {
-      alert(`💥${error.message}💥`);
+      console.error(`💥${error.message}💥`);
     }
   };
 

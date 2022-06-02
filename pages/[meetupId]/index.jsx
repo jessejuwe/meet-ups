@@ -1,54 +1,79 @@
 // our-domain.com/[identifier]
 
-import { DUMMY_MEETUPS } from '..';
+import { MongoClient, ObjectId } from 'mongodb';
 
 import MeetupDetail from '../../components/meetups/MeetupDetail';
+import { API_KEY } from '../../helper/helper';
 
 const MeetupDetails = props => {
+  const meetup = JSON.parse(props.meetupData);
+
   return (
     <MeetupDetail
-      id={props.meetupData.id}
-      image={props.meetupData.image}
-      title={props.meetupData.title}
-      description={props.meetupData.description}
-      address={props.meetupData.address}
+      image={meetup.data.image}
+      title={meetup.data.title}
+      description={meetup.data.description}
+      address={meetup.data.address}
     />
   );
 };
 
 export const getStaticPaths = async () => {
+  // TODO: fetch meetups data from API
+
+  let meetups;
+
+  try {
+    const client = await MongoClient.connect(API_KEY);
+    const db = client.db(); // database
+
+    const meetupsCollection = db.collection('meetups'); // like tables in a SQL database
+
+    // prettier-ignore
+    // Guard Clause
+    if (meetupsCollection.countDocuments === 0) throw new Error('Data collection is empty!');
+
+    meetups = await meetupsCollection.find({}, { _id: 1 }).toArray();
+
+    client.close();
+  } catch (error) {
+    // alert(`💥${error.message}💥`);
+  }
+
   return {
     fallback: false,
-    paths: [
-      { params: { meetupId: 'm1' } },
-      { params: { meetupId: 'm2' } },
-      { params: { meetupId: 'm3' } },
-      { params: { meetupId: 'm4' } },
-    ],
+    paths: meetups.map(meetup => ({
+      params: { meetupId: meetup._id.toString() },
+    })),
   };
 };
 
 export const getStaticProps = async context => {
   // TODO: fetch data for a single meetup from API
 
-  let image, title, description, address;
-
   const { meetupId } = context.params;
-  //   console.log(meetupId);
 
-  DUMMY_MEETUPS.forEach(data => {
-    if (data.id === meetupId) {
-      image = data.image;
-      title = data.title;
-      description = data.description;
-      address = data.address;
-    }
-  });
+  let meetups;
 
-  return {
-    props: { meetupData: { id: meetupId, image, title, description, address } },
-    revalidate: 10,
-  };
+  try {
+    const client = await MongoClient.connect(API_KEY); // like fetch()
+    const db = client.db(); // database
+
+    const meetupsCollection = db.collection('meetups'); // like tables in a SQL database
+
+    const count = await meetupsCollection.countDocuments();
+
+    // Guard Clause
+    if (count === 0) throw new Error('Data collection is empty!');
+
+    meetups = await meetupsCollection.findOne({ _id: ObjectId(meetupId) });
+
+    client.close();
+  } catch (error) {
+    console.error(`💥${error.message}💥`);
+  }
+
+  return { props: { meetupData: JSON.stringify(meetups) } };
 };
 
 export default MeetupDetails;

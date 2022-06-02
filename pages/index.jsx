@@ -3,6 +3,7 @@
 import { MongoClient } from 'mongodb';
 
 import MeetupList from '../components/meetups/MeetupList';
+import { API_KEY } from '../helper/helper';
 
 export const DUMMY_MEETUPS = [
   {
@@ -64,21 +65,19 @@ const HomePage = props => {
 // - when used, pages will be faster because they can be cached and resued, not regenerated all the time
 
 export const getStaticProps = async () => {
-  // TODO: fetch meetups data from API
-  const url =
-    'mongodb+srv://iktheenigma:wnxcKc8D0AktRNvo@cluster0.3jy9v4x.mongodb.net/meetups?retryWrites=true&w=majority';
-
   let meetups;
 
+  // fetch meetups data from API
   try {
-    const client = await MongoClient.connect(url);
+    const client = await MongoClient.connect(API_KEY);
     const db = client.db(); // database
 
     const meetupsCollection = db.collection('meetups'); // like tables in a SQL database
 
-    // prettier-ignore
+    const count = await meetupsCollection.countDocuments();
+
     // Guard Clause
-    if (meetupsCollection.countDocuments === 0) throw new Error('Data collection is empty!');
+    if (count === 0) throw new Error('Data collection is empty!');
 
     const data = await meetupsCollection.find().toArray();
 
@@ -92,15 +91,10 @@ export const getStaticProps = async () => {
 
     client.close();
   } catch (error) {
-    alert(`💥${error.message}💥`);
+    console.error(`💥${error.message}💥`);
   }
 
-  return {
-    props: {
-      meetups,
-    },
-    revalidate: 1,
-  };
+  return { props: { meetups }, revalidate: 1 };
 };
 
 export default HomePage;
