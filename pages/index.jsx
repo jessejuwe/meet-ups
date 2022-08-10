@@ -16,6 +16,7 @@ const HomePage = props => {
           name="description"
           content="checkout vacation spots around the world, and add yours."
         ></meta>
+        <link rel="icon" href="/plane.ico" />
       </Head>
       <MeetupList meetups={props.meetups} />
     </Fragment>

@@ -37,6 +37,7 @@ const NewMeetupPage = () => {
           name="description"
           content="Add your vacation spot to our records."
         ></meta>
+        <link rel="icon" href="/plane.ico" />
       </Head>
       <NewMeetupForm onAddMeetup={addMeetupHandler} />
     </Fragment>
