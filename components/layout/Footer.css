@@ -1,0 +1,17 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  .footer {
+    @apply p-4 w-full flex flex-col justify-center items-center bg-white shadow md:flex md:flex-row md:items-center md:justify-between md:p-6 dark:bg-primary md:fixed md:bottom-0;
+  }
+
+  .footer ul {
+    @apply flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-200 sm:mt-0;
+  }
+
+  .link {
+    @apply mr-4 hover:underline md:mr-6;
+  }
+}

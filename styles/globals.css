@@ -1,28 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap');
 
-* {
-  box-sizing: border-box;
-}
+@import '../components/layout/Layout.css';
+@import '../components/layout/MainNavigation.css';
+@import '../components/layout/Footer.css';
+@import '../components/meetups/MeetupDetail.css';
+@import '../components/meetups/MeetupItem.css';
+@import '../components/meetups/MeetupList.css';
+@import '../components/meetups/NewMeetupForm.css';
+@import '../components/ui/Card.css';
 
-body {
-  font-family: 'Open Sans', 'Lato', sans-serif;
-  margin: 0;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-  /* fallback for old browsers */
-  background: #c9d6ff;
+@layer base {
+  :root {
+    --color-sky: 14 165 233;
+    --color-purple: 168 85 247;
+    --color-pink: 236 72 153;
+    --color-emerald: 20 184 166;
+    --color-orange: 249 115 22;
 
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to top, #c9d6ff, #e2e2e2);
+    --color-switch-sky: var(--color-sky);
+    --color-switch-purple: var(--color-purple);
+    --color-switch-pink: var(--color-pink);
+    --color-switch-emerald: var(--color-emerald);
+    --color-switch-orange: var(--color-orange);
 
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to top, #c9d6ff, #e2e2e2);
-}
+    --color-theme-primary: 28 34 55;
+    --color-theme-secondary: 240 9 70;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Lato', sans-serif;
+    --color-primary: var(--color-theme-primary);
+    --color-secondary: var(--color-theme-secondary);
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  html,
+  body {
+    @apply p-0 m-0 font-lato bg-switch-emerald;
+  }
 }

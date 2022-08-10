@@ -1,22 +1,20 @@
 import Link from 'next/link';
 
-import classes from './MainNavigation.module.css';
-
 const MainNavigation = () => {
   return (
-    <header className={classes.header}>
-      <div className={classes.logo}>Vacations</div>
-      <nav>
+    <nav className="header">
+      <div className="logo">Vacations</div>
+      <header>
         <ul>
           <li>
-            <Link href="/">All Meetups</Link>
+            <Link href="/">Meetups</Link>
           </li>
           <li>
-            <Link href="/new-meetup">Add New Meetup</Link>
+            <Link href="/new-meetup">New Meetup</Link>
           </li>
         </ul>
-      </nav>
-    </header>
+      </header>
+    </nav>
   );
 };
 

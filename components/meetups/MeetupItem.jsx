@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 
 import Card from '../ui/Card';
-import classes from './MeetupItem.module.css';
 
 const MeetupItem = props => {
   const router = useRouter(); // programmatic navigation
@@ -9,17 +8,19 @@ const MeetupItem = props => {
   const showDetailsHandler = () => router.push(`/${props.id}`);
 
   return (
-    <li className={classes.item}>
+    <li className="item">
       <Card>
-        <div className={classes.image}>
-          <img src={props.image} alt={props.title} />
-        </div>
-        <div className={classes.content}>
-          <h3>{props.title}</h3>
-          <address>{props.address}</address>
-        </div>
-        <div className={classes.actions}>
-          <button onClick={showDetailsHandler}>Show Details</button>
+        <div className="box">
+          <div className="image">
+            <img src={props.image} alt={props.title} />
+          </div>
+          <div className="content">
+            <h3>{props.title}</h3>
+            <address>{props.address}</address>
+          </div>
+          <div className="actions">
+            <button onClick={showDetailsHandler}>Show Details</button>
+          </div>
         </div>
       </Card>
     </li>

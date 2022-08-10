@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .main {
+    @apply my-6 mx-auto w-[90%] max-w-[40rem];
+  }
+}

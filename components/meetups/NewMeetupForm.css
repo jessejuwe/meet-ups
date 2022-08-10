@@ -1,0 +1,42 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .form {
+    @apply p-4 bg-primary rounded;
+  }
+
+  .control {
+    @apply mb-2;
+  }
+
+  .control label {
+    @apply block font-bold mb-2 text-gray-200;
+  }
+
+  .control input,
+  .control textarea {
+    @apply block rounded border border-solid border-gray-300 p-1 w-full;
+  }
+
+  .btn {
+    @apply mt-4 cursor-pointer text-right text-white font-bold;
+  }
+
+  .add-meetup {
+    @apply py-2 px-6 border border-solid rounded hover:bg-secondary active:bg-secondary hover:border-none active:border-none;
+  }
+
+  .uploading {
+    @apply py-2 px-6 border border-solid rounded hover:bg-switch-sky active:bg-switch-sky hover:border-none active:border-none;
+  }
+
+  .uploading[disabled] {
+    @apply disabled:py-2 disabled:px-6 disabled:border disabled:border-solid disabled:rounded disabled:cursor-default disabled:bg-switch-sky;
+  }
+
+  .error {
+    @apply text-error;
+  }
+}

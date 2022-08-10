@@ -11,7 +11,7 @@ const HomePage = props => {
   return (
     <Fragment>
       <Head>
-        <title>Vacations</title>
+        <title>VACATIONS</title>
         <meta
           name="description"
           content="checkout vacation spots around the world, and add yours."

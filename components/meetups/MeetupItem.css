@@ -1,0 +1,41 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  .item {
+    @apply my-4 lg:my-[initial] mx-0 h-full lg:hover:scale-110 transition-transform duration-300 ease-in-out odd:bg-primary even:bg-switch-sky;
+  }
+
+  .box {
+    @apply sml:h-[25rem] lg:w-60;
+  }
+
+  .image {
+    @apply w-full h-40 overflow-hidden;
+  }
+
+  .image img {
+    @apply w-full object-cover;
+  }
+
+  .content {
+    @apply text-center p-4;
+  }
+
+  .content h3 {
+    @apply text-xl text-white uppercase tracking-widest mb-4;
+  }
+
+  .content address {
+    @apply text-base text-gray-200;
+  }
+
+  .actions {
+    @apply text-center flex justify-center items-center;
+  }
+
+  .actions button {
+    @apply py-1 px-5 sml:py-2 sml:px-5 m-auto text-gray-200 rounded outline-none border border-solid cursor-pointer whitespace-nowrap hover:border-none hover:bg-secondary active:bg-switch-sky transition-all bg-transparent;
+  }
+}

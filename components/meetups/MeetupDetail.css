@@ -1,0 +1,25 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .container {
+    @apply shadow-md shadow-black/90 text-center pb-[0.05rem] mt-4 bg-gradient-to-r from-[#434343] to-black rounded-lg hover:scale-105 transition-all duration-300 ease-in-out;
+  }
+
+  .container img {
+    @apply w-full object-cover h-96 rounded-t-lg;
+  }
+
+  .container h1 {
+    @apply text-3xl text-switch-orange uppercase tracking-widest;
+  }
+
+  .container p {
+    @apply text-switch-pink;
+  }
+
+  .container address {
+    @apply text-switch-sky;
+  }
+}

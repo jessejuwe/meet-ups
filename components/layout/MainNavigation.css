@@ -1,0 +1,25 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .header {
+    @apply w-full h-20 flex items-center justify-around md:justify-between py-0 px-[5%] md:px-[10%] bg-primary sticky top-0 selection:bg-switch-pink;
+  }
+
+  .logo {
+    @apply uppercase text-2xl md:text-[2rem] text-gray-200 font-bold items-center tracking-widest;
+  }
+
+  .header ul {
+    @apply list-none m-0 p-0 flex items-center;
+  }
+
+  .header li {
+    @apply ml-6 md:ml-12 hover:scale-110 transition-all duration-200 ease-in;
+  }
+
+  .header a {
+    @apply no-underline text-base md:text-2xl text-gray-200 hover:text-switch-sky;
+  }
+}

@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 
 import Card from '../ui/Card';
-import classes from './NewMeetupForm.module.css';
 
 const NewMeetupForm = props => {
   const [isUploading, setIsUploading] = useState(false);
@@ -48,27 +47,27 @@ const NewMeetupForm = props => {
 
   return (
     <Card>
-      <form className={classes.form} onSubmit={submitHandler}>
-        <div className={classes.control}>
-          <label className={error ? classes.error : ''} htmlFor="title">
+      <form className="form" onSubmit={submitHandler}>
+        <div className="control">
+          <label className={error ? 'error' : ''} htmlFor="title">
             Meetup Title
           </label>
           <input type="text" required id="title" ref={titleInputRef} />
         </div>
-        <div className={classes.control}>
-          <label className={error ? classes.error : ''} htmlFor="image">
+        <div className="control">
+          <label className={error ? 'error' : ''} htmlFor="image">
             Meetup Image
           </label>
           <input type="url" required id="image" ref={imageInputRef} />
         </div>
-        <div className={classes.control}>
-          <label className={error ? classes.error : ''} htmlFor="address">
+        <div className="control">
+          <label className={error ? 'error' : ''} htmlFor="address">
             Address
           </label>
           <input type="text" required id="address" ref={addressInputRef} />
         </div>
-        <div className={classes.control}>
-          <label className={error ? classes.error : ''} htmlFor="description">
+        <div className="control">
+          <label className={error ? 'error' : ''} htmlFor="description">
             Description
           </label>
           <textarea
@@ -78,10 +77,10 @@ const NewMeetupForm = props => {
             ref={descriptionInputRef}
           ></textarea>
         </div>
-        <div className={classes.actions}>
+        <div className="btn">
           <button
             disabled={isUploading ? true : false}
-            className={isUploading ? classes.uploading : classes['add-meetup']}
+            className={isUploading ? 'uploading' : 'add-meetup'}
           >
             {!isUploading ? 'Add Meetup' : 'Uploading...'}
           </button>
