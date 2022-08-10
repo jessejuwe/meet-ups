@@ -36,6 +36,6 @@
   }
 
   .actions button {
-    @apply py-1 px-5 sml:py-2 sml:px-5 m-auto text-gray-200 rounded outline-none border border-solid cursor-pointer whitespace-nowrap hover:border-none hover:bg-secondary active:bg-switch-sky transition-all bg-transparent;
+    @apply py-1 px-5 sml:py-2 sml:px-5 mb-4 text-gray-200 rounded outline-none border border-solid cursor-pointer whitespace-nowrap hover:border-none hover:bg-secondary active:bg-switch-sky transition-all bg-transparent;
   }
 }
