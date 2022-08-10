@@ -1,4 +1,4 @@
-Livesite: https://meet-mata4dmk0-jessejuwe.vercel.app
+Livesite: http://meet-ups-phi.vercel.app/
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
